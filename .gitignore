@@ -1,0 +1,32 @@
+# venv and Python
+venv/
+__pycache__/
+*.pyc
+
+# data and indexes
+*.bin
+*.pkl
+*.safetensors
+faiss_index.bin
+med_faiss_index.bin
+
+# model caches and big downloads
+transformers_cache/
+sentence_transformers/
+models/
+*.ckpt
+*.pt
+
+# environment files
+.env
+.env.local
+
+# OS files
+.DS_Store
+
+# logs
+*.log
+
+# notebooks outputs
+.ipynb_checkpoints/
+*.ipynb

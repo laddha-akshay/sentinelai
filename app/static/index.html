@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>SentinelAI Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; }
+    textarea { width: 100%; height: 120px; }
+    input[type=text] { width: 60%; }
+    pre { background: #f4f4f4; padding: 12px; border-radius: 6px; }
+    .btn { padding: 8px 12px; border: 0; background: #2563eb; color: white; border-radius: 6px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>SentinelAI - Demo</h2>
+  <p>Upload a log file then ask queries like "show high risk anomalies last 24h"</p>
+
+  <div>
+    <label>Upload logs file (.log)</label><br/>
+    <input id="file" type="file"/>
+    <button class="btn" onclick="upload()">Upload</button>
+    <div id="uploadStatus"></div>
+  </div>
+
+  <hr/>
+
+  <div>
+    <input id="q" type="text" placeholder="Enter query"/>
+    <button class="btn" onclick="ask()">Ask</button>
+  </div>
+
+  <h3>Results</h3>
+  <pre id="results"></pre>
+  <h3>Explanation</h3>
+  <pre id="explain"></pre>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
