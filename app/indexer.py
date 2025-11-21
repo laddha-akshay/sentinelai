@@ -28,9 +28,20 @@ class FaissIndexer:
                 self.metadata = pickle.load(f)
 
     def search(self, qvec, k=5):
+        # handle empty index safely
+        if getattr(self.index, 'ntotal', 0) == 0 or len(self.metadata) == 0:
+            return []
         D, I = self.index.search(qvec, k)
         results = []
+        seen = set()
         for row in I:
             for idx in row:
-                results.append(self.metadata[idx])
+                if idx == -1:
+                    continue
+                if idx in seen:
+                    continue
+                seen.add(idx)
+                # guard against stale indices
+                if 0 <= idx < len(self.metadata):
+                    results.append(self.metadata[idx])
         return results
